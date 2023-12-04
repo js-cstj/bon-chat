@@ -1,0 +1,42 @@
+#app {
+    width: 40em;
+    justify-self: center;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+
+    .message {
+        position: relative;
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        padding: 0.5em;
+        border-radius: .5em;
+        background-color: #e8e8e8;
+
+        .emoji {
+            font-size: 2em;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .nom {
+            font-weight: bold;
+            font-size: 1.25em;
+        }
+
+        .courriel {
+            font-size: .75em;
+        }
+
+        &.moi {
+            grid-template-columns: 1fr min-content;
+            .membre {
+                order:2;
+            }
+        }
+    }
+}

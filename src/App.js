@@ -5,9 +5,9 @@ export default class App {
 	 */
 	static main() {
 		var app = document.getElementById("app");
-		this.chargerJson("fichier.json").then(donnees => {
-		});
-		if (true) {
+		// this.chargerJson("fichier.json").then(donnees => {
+		// });
+		if (false) {
 			document.body.appendChild(this.html_form_login());
 			var form_login = document.forms.login;
 			form_login.addEventListener("submit", e => {

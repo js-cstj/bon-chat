@@ -1,0 +1,27 @@
+#login {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 1em;
+    box-shadow: .2em .2em .2em #0008;
+    max-width: 90%;
+    max-height: 90%;
+    img {
+        display: block;
+        width: 48px;
+    }
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        gap: .25em;
+        overflow-y: auto;
+        height: 100px;
+        border: none;
+        padding: .25em;
+    }
+    fieldset > input {
+        display: none;
+    }
+    input:checked + label {
+        outline: solid 2px red;
+    }
+}

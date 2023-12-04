@@ -137,4 +137,70 @@ nav ul li a:hover {
 }
 #login input:checked + label {
   outline: solid 2px red;
+}
+
+#login {
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.5333333333);
+  max-width: 90%;
+  max-height: 90%;
+}
+#login img {
+  display: block;
+  width: 48px;
+}
+#login fieldset {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 0.25em;
+  overflow-y: auto;
+  height: 100px;
+  border: none;
+  padding: 0.25em;
+}
+#login fieldset > input {
+  display: none;
+}
+#login input:checked + label {
+  outline: solid 2px red;
+}
+
+#app {
+  width: 40em;
+  justify-self: center;
+}
+
+#messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+#messages .message {
+  position: relative;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: #e8e8e8;
+}
+#messages .message .emoji {
+  font-size: 2em;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#messages .message .nom {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+#messages .message .courriel {
+  font-size: 0.75em;
+}
+#messages .message.moi {
+  grid-template-columns: 1fr min-content;
+}
+#messages .message.moi .membre {
+  order: 2;
 }/*# sourceMappingURL=style.css.map */

@@ -29,45 +29,45 @@
 		<div class="body" id="app">
 			<div id="messages">
 				<div class="message">
-					<p><strong>Message 1</strong></p>
-					<p>Texte: Premier message</p>
-					<p>Emoji: 😊</p>
-					<p>Envoyé par : Alice (alice@example.com)</p>
-					<p>Date d'ajout : 2023-12-04 08:30:00</p>
-					<p>Délai : 120 secondes depuis l'ajout</p>
-				</div>
-				<div class="message">
-					<p><strong>Message 2</strong></p>
-					<p>Texte: Un autre message</p>
-					<p>Emoji: 🚀</p>
-					<p>Envoyé par : Bob (bob@example.com)</p>
-					<p>Date d'ajout : 2023-12-03 15:45:00</p>
-					<p>Délai : 300 secondes depuis l'ajout</p>
-				</div>
+					<div class="membre">
+						<img src="./img/avatars/avatar10_90.webp" alt="">
+						<p class="nom">Alice</p>
+						<p class="courriel">alice@example.com</p>
+						<p>2023-12-04 08:30:00</p>
+					</div>
+					<p class="emoji">😊</p>
+					<p>Premier message</p>
+				</div>		
+				<div class="message moi">
+					<div class="membre">
+						<img src="./img/avatars/avatar10_90.webp" alt="">
+						<p class="nom">Alice</p>
+						<p class="courriel">alice@example.com</p>
+						<p>2023-12-04 08:30:00</p>
+					</div>
+					<p class="emoji">😊</p>
+					<p>Premier message</p>
+				</div>		
+				
 			</div>
-			<div id="messages"></div>
 			<div class="body" id="app">
 				<div id="messages"></div>
-				<form action="" id="ajouter">
-					<label for="texte">Texte du message:</label>
-					<input type="text" id="texte" name="texte" required><br><br>
+				<form action="" id="nouveau_message" name="nouveau_message">
+					<h1>Répondre</h1>
+					<div>
+						<img id="avatar_membre" src="img" alt="">
+					</div>
+					<div>
+						<label for="texte">Texte du message:</label>
+						<input type="text" id="texte" name="texte" required>
+					</div>
 
-					<label for="emoji">Emoji:</label>
-					<input type="text" id="emoji" name="emoji"><br><br>
+					<div>
+						<label for="emoji">Emoji:</label>
+						<input type="text" id="emoji" name="emoji">
+					</div>
 
-					<label for="membre_nom">Nom du membre:</label>
-					<input type="text" id="membre_nom" name="membre_nom" required><br><br>
-
-					<label for="membre_courriel">Courriel du membre:</label>
-					<input type="email" id="membre_courriel" name="membre_courriel" required><br><br>
-
-					<label for="date_ajout">Date d'ajout:</label>
-					<input type="datetime-local" id="date_ajout" name="date_ajout" required><br><br>
-
-					<label for="delai">Délai (en secondes):</label>
-					<input type="number" id="delai" name="delai" required><br><br>
-
-					<input type="submit" value="Ajouter">
+					<div><button>Envoyer</button></div>
 				</form>
 			</div>
 		</div>
