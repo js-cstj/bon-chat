@@ -1,0 +1,23 @@
+const emojis = [
+	{nom: 'Souriant', emoji: '🙂'},
+	{nom: 'Rieur', emoji: '😄'},
+	{nom: 'Rieur aux larmes', emoji: '😂'},
+	{nom: 'Sourire radieux', emoji: '😊'},
+	{nom: 'Mort de rire', emoji: '😆'},
+	{nom: 'Yeux en cœur', emoji: '😍'},
+	{nom: 'Clin d\'œil', emoji: '😉'},
+	{nom: 'Satisfait', emoji: '😌'},
+	{nom: 'Halo', emoji: '😇'},
+	{nom: 'Lunettes de soleil', emoji: '😎'},
+	{nom: 'Timide', emoji: '🥺'},
+	{nom: 'Gouttes de sueur', emoji: '😅'},
+	{nom: 'Masque médical', emoji: '😷'},
+	{nom: 'Cornes', emoji: '😈'},
+	{nom: 'Monocle', emoji: '🧐'},
+	{nom: 'Langue', emoji: '😋'},
+	{nom: 'Sonné', emoji: '😵‍💫'},
+	{nom: 'Yeux en étoiles', emoji: '🤩'},
+	{nom: 'Bouche cousue', emoji: '🤐'},
+	{nom: 'Bâillon', emoji: '🤫'},
+];
+export default emojis;
