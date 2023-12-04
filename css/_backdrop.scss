@@ -1,0 +1,40 @@
+#backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;   
+    background-color: #0008;
+    backdrop-filter: blur(3px) saturate(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#login {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 1em;
+    box-shadow: .2em .2em .2em #0008;
+    max-width: 90%;
+    max-height: 90%;
+    img {
+        display: block;
+        width: 48px;
+    }
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        gap: .25em;
+        overflow-y: auto;
+        height: 100px;
+        border: none;
+        padding: .25em;
+    }
+    fieldset > input {
+        display: none;
+    }
+    input:checked + label {
+        outline: solid 2px red;
+    }
+}

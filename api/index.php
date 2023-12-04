@@ -6,8 +6,8 @@ use Geomerty\Rect;
 use Image\Image;
 use Image\Output;
 
-$dsn = 'mysql://root@localhost:3306/quidditch/';
-// $dsn = 'sqlite://C:\Users\mboudrea\Downloads\synthese_james_29-08_new_api\database\db.sqlite';
+// $dsn = 'mysql://root@localhost:3306/quidditch/';
+$dsn = 'sqlite://chat.sqlite';
 $clients = [];
 
 /**
