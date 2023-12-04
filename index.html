@@ -59,15 +59,18 @@
 					</div>
 					<div>
 						<label for="texte">Texte du message:</label>
-						<input type="text" id="texte" name="texte" required>
+						<input type="text" id="texte" name="texte" required value="lorem ipsum">
 					</div>
 
 					<div>
 						<label for="emoji">Emoji:</label>
-						<input type="text" id="emoji" name="emoji">
+						<input type="text" id="emoji" name="emoji" value="1">
 					</div>
 
-					<div><button>Envoyer</button></div>
+					<div>
+						<input type="hidden" name="membre_id" id="membre_id" value="">
+						<button>Envoyer</button>
+					</div>
 				</form>
 			</div>
 		</div>

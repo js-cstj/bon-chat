@@ -5,9 +5,8 @@ export default class App {
 	 */
 	static main() {
 		var app = document.getElementById("app");
-		// this.chargerJson("fichier.json").then(donnees => {
-		// });
-		if (false) {
+		localStorage.membre_id = 1;
+		if (!localStorage.membre_id) {
 			document.body.appendChild(this.html_form_login());
 			var form_login = document.forms.login;
 			form_login.addEventListener("submit", e => {
@@ -28,16 +27,95 @@ export default class App {
 						throw new Error('Erreur lors de la requête ' + response.status);
 					}
 					return response.json(); // Ou response.text() selon le type de données attendu
-				}).then(data => {
+				}).then(reponse => {
 					// Traiter la réponse du serveur
-					console.log('Réponse du serveur:', data);
+					document.getElementById("backdrop").remove();
+					return this.chargerJson("http://localhost:8888/api/membres/nom/" + data.get('nom')).then(membres => {
+						const membre = membres.pop();
+						// console.log(membre);
+						localStorage.membre_id = membre.id;
+					});
 					// Faire quelque chose avec la réponse reçue du serveur
-				}).catch(error => {
-					// Attraper les erreurs de la requête
-					console.error('Erreur:', error);
 				});
 			});
 		}
+		this.chargerJson("http://localhost:8888/api/derniers_messages").then(messages => {
+			var vieux = document.getElementById("messages");
+			var nouveau = this.html_lesMessages(messages);
+			vieux.replaceWith(nouveau);
+		});
+		var nouveau_message = document.forms.nouveau_message;
+		nouveau_message.addEventListener("submit", e => {
+			e.preventDefault();
+
+			nouveau_message.membre_id.value = localStorage.membre_id;
+			// Récupérer les valeurs du formulaire
+			const formData = new FormData(nouveau_message);
+
+			// URL du serveur destinataire
+			const url = 'http://localhost:8888/api/messages';
+
+			// Options de la requête
+			const options = {
+				method: 'POST',
+				body: formData
+			};
+
+			// Envoi de la requête
+			fetch(url, options).then(response => {
+				if (!response.ok) {
+					throw new Error('Erreur lors de la requête ' + response.status);
+				}
+				return response.json(); // Ou response.text() selon le type de données attendu
+			}).then(data => {
+				// Traiter la réponse du serveur
+				console.log('Réponse du serveur:', data);
+				this.chargerJson("http://localhost:8888/api/derniers_messages").then(messages => {
+					var vieux = document.getElementById("messages");
+					var nouveau = this.html_lesMessages(messages);
+					vieux.replaceWith(nouveau);
+				});
+				// Faire quelque chose avec la réponse reçue du serveur
+			});
+		});
+	}
+	static html_lesMessages(tMessages) {
+		var resultat = document.createElement("div");
+		resultat.id = "messages";
+		for (let i = 0; i < tMessages.length; i += 1) {
+			const objMessage = tMessages[i];
+			resultat.appendChild(this.html_unMessage(objMessage));
+		}
+		return resultat;
+	}
+	static html_unMessage(objMessage) {
+		var resultat = document.createElement("div");
+		resultat.classList.add("message");
+		if (objMessage.membre_id == localStorage.membre_id) {
+			resultat.classList.add("moi");
+		}
+		var divMembre = resultat.appendChild(document.createElement("div"));
+		divMembre.classList.add("membre");
+		var img = divMembre.appendChild(document.createElement("img"));
+		img.src = `./img/avatars/avatar${objMessage.membre_avatar}_90.webp`;
+		img.alt = "Avatar de " + objMessage.membre_nom;
+		var pNom = divMembre.appendChild(document.createElement("p"));
+		pNom.classList.add("nom");
+		pNom.innerHTML = objMessage.membre_nom;
+		var pCourriel = divMembre.appendChild(document.createElement("p"));
+		pCourriel.classList.add("courriel");
+		pCourriel.innerHTML = objMessage.membre_courriel;
+		var pDate = divMembre.appendChild(document.createElement("p"));
+		pDate.classList.add("date");
+		pDate.innerHTML = objMessage.date_ajout;
+
+		var pEmoji = resultat.appendChild(document.createElement("p"));
+		pEmoji.classList.add("emoji");
+		pEmoji.innerHTML = "😊";
+		var pTexte = resultat.appendChild(document.createElement("p"));
+		pTexte.classList.add("texte");
+		pTexte.innerHTML = objMessage.texte;
+		return resultat;
 	}
 	static html_form_login() {
 		var resultat = document.createElement("div");
@@ -74,7 +152,7 @@ export default class App {
 		label.setAttribute("for", "avatar");
 		label.innerHTML = "Avatar";
 		var fieldset = div.appendChild(document.createElement("fieldset"));
-		for (let i = 1; i <= 65; i += 1) {
+		for (let i = 1; i <= 67; i += 1) {
 			input = fieldset.appendChild(document.createElement("input"));
 			input.type = "radio";
 			input.id = "avatar" + i;
